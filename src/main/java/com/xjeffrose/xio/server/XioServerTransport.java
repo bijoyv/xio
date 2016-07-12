@@ -87,7 +87,7 @@ public class XioServerTransport {
         cp.addLast("encryptionHandler", securityHandlers.getEncryptionHandler());
         cp.addLast("messageLogger", new XioMessageLogger());
         cp.addLast("codec", def.getCodecFactory().getCodec());
-        cp.addLast("compressor", new HttpContentCompressor());
+        cp.addLast("compressor", new XioContentCompressor());
         cp.addLast("aggregator", def.getAggregatorFactory().getAggregator());
         cp.addLast("routingFilter", def.getRoutingFilterFactory().getRoutingFilter());
         if (def.getClientIdleTimeout() != null) {

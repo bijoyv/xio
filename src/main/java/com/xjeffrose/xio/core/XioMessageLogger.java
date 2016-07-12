@@ -41,7 +41,7 @@ public class XioMessageLogger extends LoggingHandler {
   }
 
   private void logMessageDebug(ChannelHandlerContext ctx, String eventName, Object msg) {
-    log.debug(format(ctx, formatMessage(eventName, msg)));
+    log.info(format(ctx, formatMessage(eventName, msg)));
   }
 
   // for syslog, newline won't work, so the default pretty print logging format is messy
