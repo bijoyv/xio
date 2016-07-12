@@ -34,6 +34,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.inject.Inject;
+
+import io.netty.handler.codec.http.HttpContentCompressor;
 import org.apache.log4j.Logger;
 
 public class XioServerTransport {
@@ -85,6 +87,7 @@ public class XioServerTransport {
         cp.addLast("encryptionHandler", securityHandlers.getEncryptionHandler());
         cp.addLast("messageLogger", new XioMessageLogger());
         cp.addLast("codec", def.getCodecFactory().getCodec());
+        cp.addLast("compressor", new HttpContentCompressor());
         cp.addLast("aggregator", def.getAggregatorFactory().getAggregator());
         cp.addLast("routingFilter", def.getRoutingFilterFactory().getRoutingFilter());
         if (def.getClientIdleTimeout() != null) {
